@@ -1,8 +1,9 @@
 package jpabook.jpashop.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -13,6 +14,9 @@ public class Item {
     private String name;
     private int price;
     private int stockQuantity;
+
+    @OneToMany(mappedBy = "item")
+    private List<Category_item> categories = new ArrayList<Category_item>();
 
     public Long getId() {
         return id;
